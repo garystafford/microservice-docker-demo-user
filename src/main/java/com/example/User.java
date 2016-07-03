@@ -24,4 +24,19 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public User() {
+    }
+
+    public User(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "User[id=%s, firstName='%s', lastName='%s']",
+                id, firstName, lastName);
+    }
 }
