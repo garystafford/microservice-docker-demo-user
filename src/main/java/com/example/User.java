@@ -2,12 +2,36 @@ package com.example;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.List;
+
 public class User {
     @Id
     private String id;
 
     private String firstName;
     private String lastName;
+    private String userName;
+    private Integer points;
+    private List<Widget> widgets;
+
+    public User() {
+    }
+
+    public User(String firstName, String lastName, String userName, Integer points, List<Widget> widgets) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.points = points;
+        this.widgets = widgets;
+    }
+
+    public List<Widget> getWidgets() {
+        return widgets;
+    }
+
+    public void setWidgets(List<Widget> widgets) {
+        this.widgets = widgets;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -25,18 +49,16 @@ public class User {
         this.lastName = lastName;
     }
 
-    public User() {
+    public Integer getPoints() {
+        return points;
     }
 
-    public User(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public void setPoints(Integer points) {
+        this.points = points;
     }
 
     @Override
     public String toString() {
-        return String.format(
-                "User[id=%s, firstName='%s', lastName='%s']",
-                id, firstName, lastName);
+        return String.format("%s %s", firstName, lastName);
     }
 }
