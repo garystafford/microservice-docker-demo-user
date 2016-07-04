@@ -1,6 +1,6 @@
 # microservice-docker-demo-user
 #### Introduction
-One of a set of Java Spring Boot microservices, for an upcoming post on scaling Spring Boot microservices with Docker.
+One of a set of Java Spring Boot microservices, for an upcoming post on scaling Spring Boot microservices with the latest Docker features.
 
 #### Technologies
 * Java
@@ -20,12 +20,13 @@ mongo
 ```bash
 # import sample data
 mongoimport --db widget-development --collection widget --type json --jsonArray \
-    --file <project_path>/widget-docker-demo/user/src/main/resources/data/user_data.json
+    --file /Users/gstaffo/IdeaProjects/widget-docker-demo/user/src/main/resources/data/user_data.json
 ```
 
 ```bash
 # build and start service
-./gradlew build && java -jar build/libs/user-0.0.1-SNAPSHOT.jar
+./gradlew clean build && \
+java -jar build/libs/user-0.0.1-SNAPSHOT.jar
 ```
 
 ```bash
