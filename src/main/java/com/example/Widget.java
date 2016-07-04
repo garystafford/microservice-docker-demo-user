@@ -12,19 +12,19 @@ public class Widget {
     private String name;
     private String color;
     private String size;
-    private Integer price;
+    private Integer value;
     private String preview;
 
     public Widget() {
     }
 
     public Widget(String product_id, String name, String color,
-                  String size, Integer price, String preview) {
+                  String size, Integer value, String preview) {
         this.product_id = product_id;
         this.name = name;
         this.color = color;
         this.size = size;
-        this.price = price;
+        this.value = value;
         this.preview = preview;
     }
 
@@ -60,12 +60,12 @@ public class Widget {
         this.size = size;
     }
 
-    public Integer getPrice() {
-        return price;
+    public Integer getValue() {
+        return value;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
+    public void setValue(Integer value) {
+        this.value = value;
     }
 
     public String getPreview() {
