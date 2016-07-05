@@ -21,8 +21,8 @@ mongo
 
 ```bash
 # import sample data
-mongoimport --db users --collection widget --type json --jsonArray \
-    --file /Users/gstaffo/IdeaProjects/widget-docker-demo/user/src/main/resources/data/user_data.json
+mongoimport --db users --collection user --type json --jsonArray \
+    --file /Users/gstaffo/Documents/projects/widget-docker-demo/user-service/src/main/resources/data/user_data.json
 ```
 
 ```bash
