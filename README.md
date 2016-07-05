@@ -7,26 +7,34 @@ One of a set of Java Spring Boot microservices, for an upcoming post on scaling 
 * Spring Boot
 * Gradle
 * MongoDB
+* Spring Cloud Config Server
+* Spring Cloud Netflix Eureka
 
 #### Commands
 ```bash
 # drop existing database
 mongo
-> use user-development
+> use users
 > db.user.find()
 > db.dropDatabase()
 ```
 
 ```bash
 # import sample data
-mongoimport --db widget-development --collection widget --type json --jsonArray \
+mongoimport --db users --collection widget --type json --jsonArray \
     --file /Users/gstaffo/IdeaProjects/widget-docker-demo/user/src/main/resources/data/user_data.json
 ```
 
 ```bash
 # build and start service
 ./gradlew clean build && \
-java -jar build/libs/user-0.0.1-SNAPSHOT.jar
+  java -jar -Dspring.profiles.active=development \
+    build/libs/user-service-0.0.1-SNAPSHOT.jar
+
+# production
+./gradlew clean build && \
+  java -jar -Dspring.profiles.active=production \
+    build/libs/user-service-0.0.1-SNAPSHOT.jar
 ```
 
 ```bash
