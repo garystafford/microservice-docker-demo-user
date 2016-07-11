@@ -1,6 +1,6 @@
 # microservice-docker-demo-user
 #### Introduction
-One of a set of Java Spring Boot microservices, for an upcoming post on scaling Spring Boot microservices with the latest Docker features.
+One of a set of Java Spring Boot microservices, for an upcoming post on scaling Spring Boot microservices with the latest Spring and Docker features.
 
 #### Technologies
 * Java
@@ -9,36 +9,46 @@ One of a set of Java Spring Boot microservices, for an upcoming post on scaling 
 * MongoDB
 * Spring Cloud Config Server
 * Spring Cloud Netflix Eureka
+* Spring Boot with Docker
 
 #### Commands
+Common MongoDB Commands
 ```bash
-# drop existing database
-mongo
+mongo # use mongo shell
+> show dbs
 > use users
 > db.user.find()
 > db.dropDatabase()
 ```
 
+Import sample data to MongoDB
 ```bash
-# import sample data
+PROJECT_ROOT='/Users/gstaffo/Documents/projects/widget-docker-demo'
 mongoimport --db users --collection user --type json --jsonArray \
-    --file /Users/gstaffo/Documents/projects/widget-docker-demo/user-service/src/main/resources/data/user_data.json
+    --file ${PROJECT_ROOT}/user-service/src/main/resources/data/data.json
 ```
 
+Build and start service
 ```bash
-# build and start service
+# development environment profile
 ./gradlew clean build && \
   java -jar -Dspring.profiles.active=development \
-    build/libs/user-service-0.0.1-SNAPSHOT.jar
+    build/libs/user-service-0.1.0.jar
 
-# production
+# production environment profile
 ./gradlew clean build && \
   java -jar -Dspring.profiles.active=production \
-    build/libs/user-service-0.0.1-SNAPSHOT.jar
+    build/libs/user-service-0.1.0.jar
 ```
 
+Build Docker Image of service (do not include profile)
 ```bash
-# test service
+./gradlew clean build buildDocker --info
+```
+
+Test the service
+```bash
+# create new user document
 curl -i -X POST -H "Content-Type:application/json" -d '{
   "firstName": "Max",
   "lastName": "Mustermann",
@@ -64,6 +74,8 @@ curl -i -X POST -H "Content-Type:application/json" -d '{
   ]
 }' http://localhost:8031/users
 
+# get all widgets
 curl http://localhost:8031/users | prettyjson
 curl http://localhost:8031/users/search/findByLastName?name=Mustermann | prettyjson
 ```
+_* uses prettyjson Ruby gem_
