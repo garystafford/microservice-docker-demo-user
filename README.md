@@ -1,17 +1,18 @@
 # microservice-docker-demo-user
 #### Introduction
-One of a set of Java Spring Boot microservices, for an upcoming post on scaling Spring Boot microservices with the latest Spring and Docker features.
+One of a set of Java Spring Boot services, for an upcoming post on scaling Spring Boot microservices with the latest Spring and Docker features.
 
 #### Technologies
 * Java
 * Spring Boot
 * Gradle
 * MongoDB
-* Spring Cloud Config Server
+* Consul
+* Spring Cloud Config Server (migrating to Consul)
 * Spring Cloud Netflix Eureka
 * Spring Boot with Docker
 
-#### Commands
+#### MongoDB
 Common MongoDB Commands
 ```bash
 mongo # use mongo shell
@@ -28,6 +29,7 @@ mongoimport --db users --collection user --type json --jsonArray \
     --file ${PROJECT_ROOT}/user-service/src/main/resources/data/data.json
 ```
 
+#### Build Service
 Build and start service
 ```bash
 # development environment profile
@@ -41,14 +43,9 @@ Build and start service
     build/libs/user-service-0.1.0.jar
 ```
 
-Build Docker Image of service (do not include profile)
+#### Test Service
+Create new user document
 ```bash
-./gradlew clean build buildDocker --info
-```
-
-Test the service
-```bash
-# create new user document
 curl -i -X POST -H "Content-Type:application/json" -d '{
   "firstName": "Max",
   "lastName": "Mustermann",
@@ -73,9 +70,29 @@ curl -i -X POST -H "Content-Type:application/json" -d '{
     }
   ]
 }' http://localhost:8031/users
+```
 
-# get all widgets
+Get widgets
+```bash
 curl http://localhost:8031/users | prettyjson
 curl http://localhost:8031/users/search/findByLastName?name=Mustermann | prettyjson
 ```
-_* uses prettyjson Ruby gem_
+
+#### Docker
+Build Docker Image containing service jar
+```bash
+# login to Docker Hub first
+docker login
+```
+
+```bash
+# profile will be used to run Docker container not create Docker Image
+./gradlew clean build buildDocker
+```
+
+```bash
+docker run -e "SPRING_PROFILES_ACTIVE=production" -p 8031:8031 -t garystafford/user-service
+```
+
+#### References
+* https://github.com/Transmode/gradle-docker
