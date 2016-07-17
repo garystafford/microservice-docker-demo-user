@@ -72,24 +72,25 @@ curl -i -X POST -H "Content-Type:application/json" -d '{
 }' http://localhost:8031/users
 ```
 
-Get widgets
+Get users
 ```bash
 curl http://localhost:8031/users | prettyjson
 curl http://localhost:8031/users/search/findByLastName?name=Mustermann | prettyjson
 ```
 
 #### Docker
-Build Docker Image containing service jar
+Login to Docker Hub first
 ```bash
-# login to Docker Hub first
 docker login
 ```
 
+Build the Docker Image containing service jar. The profile will be used to run
+ Docker container not create Docker Image
 ```bash
-# profile will be used to run Docker container not create Docker Image
 ./gradlew clean build buildDocker
 ```
 
+Create and run a Docker container
 ```bash
 docker run -e "SPRING_PROFILES_ACTIVE=production" -p 8031:8031 -t garystafford/user-service
 ```
