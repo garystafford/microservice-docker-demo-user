@@ -1,20 +1,24 @@
 # microservice-docker-demo-user
 
-#### Introduction
+## Introduction
+
 One of a set of Java Spring Boot services, for an upcoming post on scaling Spring Boot microservices with the latest Spring and Docker features.
 
-#### Technologies
-* Java
-* Spring Boot
-* Gradle
-* MongoDB
-* Consul
-* Spring Cloud Config Server (migrating to Consul)
-* Spring Cloud Netflix Eureka
-* Spring Boot with Docker
+## Technologies
 
-#### MongoDB
+- Java
+- Spring Boot
+- Gradle
+- MongoDB
+- Consul
+- Spring Cloud Config Server (migrating to Consul)
+- Spring Cloud Netflix Eureka
+- Spring Boot with Docker
+
+## MongoDB
+
 Common MongoDB Commands
+
 ```bash
 mongo # use mongo shell
 > show dbs
@@ -23,29 +27,29 @@ mongo # use mongo shell
 > db.dropDatabase()
 ```
 
-Import sample data to MongoDB
+Import sample data to MongoDB locally
+
 ```bash
 PROJECT_ROOT='/Users/gstaffo/Documents/projects/widget-docker-demo'
-mongoimport --db users --collection user --type json --jsonArray \
-    --file ${PROJECT_ROOT}/user-service/src/main/resources/data/data.json
+mongoimport --host localhost:27017 --db users --collection user \
+  --type json --jsonArray \
+  --file ${PROJECT_ROOT}/user-service/src/main/resources/data/data.json
 ```
 
-#### Build Service
-Build and start service
+## Build Service
+
+Build and start service locally
+
 ```bash
-# development environment profile
 ./gradlew clean build && \
-  java -jar -Dspring.profiles.active=development \
-    build/libs/user-service-0.1.0.jar
-
-# production environment profile
-./gradlew clean build && \
-  java -jar -Dspring.profiles.active=production \
-    build/libs/user-service-0.1.0.jar
+  java -jar -Dspring.profiles.active=local \
+  build/libs/user-service-0.1.0.jar
 ```
 
-#### Test Service
+## Test Service
+
 Create new user document
+
 ```bash
 curl -i -X POST -H "Content-Type:application/json" -d '{
   "firstName": "Max",
@@ -74,27 +78,41 @@ curl -i -X POST -H "Content-Type:application/json" -d '{
 ```
 
 Get users
+
 ```bash
 curl http://localhost:8031/users | prettyjson
 curl http://localhost:8031/users/search/findByLastName?name=Mustermann | prettyjson
 ```
 
-#### Docker
+## Docker
+
 Login to Docker Hub first
+
 ```bash
 docker login
 ```
 
-Build the Docker Image containing service jar. The profile will be used to run
- Docker container not create Docker Image
+Build the Docker Image containing service jar. The profile will be used to run Docker container not create Docker Image
+
 ```bash
 ./gradlew clean build buildDocker
 ```
 
 Create and run a Docker container
+
 ```bash
 docker run -e "SPRING_PROFILES_ACTIVE=production" -p 8031:8031 -t garystafford/user-service
 ```
 
-#### References
-* https://github.com/Transmode/gradle-docker
+Import sample data to MongoDB running in container
+_Doesn't work right now even with sudo - error inserting documents: not authorized_
+```bash
+PROJECT_ROOT='/Users/gstaffo/Documents/projects/widget-docker-demo'
+mongoimport --host localhost:27018 --db user --collection user \
+  --type json --jsonArray \
+  --file ${PROJECT_ROOT}/user-service/src/main/resources/data/data.json
+```
+
+## References
+
+- <https://github.com/Transmode/gradle-docker>
