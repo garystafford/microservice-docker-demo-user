@@ -9,7 +9,7 @@ script:
 - bash ./deploy.sh
 env:
   global:
-  - GH_REF: github.com/garystafford/microservice-docker-demo-artifacts.git
+  - GH_REF: github.com/garystafford/microservice-docker-demo-user.git
   - secure: bfdmZaW1MQHecyuZ5P29w7oKAY4baXt+lHZ0RulYcS4mYPjHI+qBniI201qoBvZ7zXhxsdysCGvTpz1MbLGroT1YacVSBNA3qfwLA7K/PEdYvGvnD7YaOJMKeXzFZnvkprzQg6IQMlzOT83HcwBp/KDE1ZJj0O0yUJW5tSv/0wJ9jOTV+8BnwcYP05oIHoFwDrPeA0Kqvd9VmPM9MDwYTlr7RzzyuPtnRBeTerOkyAWZGg+df8s/8cUtzf73R8beNGLxcnRPnKl9ftaiPiYx7LPONpe3ATqyRnLnxsvhIdxlSjYqHDTdIqPnbugjyoerapxUH5+is/oEY1STUwv9kSXzNtNkuKwvKZEF80UPDFEFk+JzhjS0ymU6Q6m0dsQgjx+FGXXrwekNW7Te5J5M8tu/kuwUAgHTDPdubfuV+FjUWqmYC4tyb7r2Sq1dOCD9wTV28fc+t+VbWxGO2kTwFIGFXwLxNnX0ZrDVTjG/r6k7LC3rX6Xr/yOvy7OzQT0TZxSlyAI8dCJf4ERk7uKopqK5S2oXRqY15bMazbH7OUrFKWYjv7exbD3ifZb2IFYnL2ZDF9sDCwVBta2cNOkgYO0p08zh2Obz3Nq/Q5TH0kgonn2gUqWUh32X4F5Usq/l1suDWn4PPZJ0Tinn9SLmO0Iq0FZj31dihoMwcxHLpYo=
 notifications:
   slack:
