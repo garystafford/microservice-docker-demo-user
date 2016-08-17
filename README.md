@@ -114,5 +114,4 @@ mongoimport --host localhost:27018 --db user --collection user \
 ```
 
 ## References
-
-- <https://github.com/Transmode/gradle-docker>
+[https://github.com/Transmode/gradle-docker](https://github.com/Transmode/gradle-docker)
