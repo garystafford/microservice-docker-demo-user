@@ -1,3 +1,5 @@
+![https://travis-ci.org/garystafford/microservice-docker-demo-user.svg?branch=master](https://travis-ci.org/garystafford/microservice-docker-demo-user.svg?branch=master)
+
 # microservice-docker-demo-user
 
 ## Introduction
