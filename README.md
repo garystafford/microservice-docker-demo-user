@@ -4,7 +4,7 @@
 ###### Docker Hub:  
 [![](https://images.microbadger.com/badges/version/garystafford/microservice-docker-demo-user.svg)](http://microbadger.com/images/garystafford/microservice-docker-demo-user "Get your own version badge on microbadger.com")  [![](https://images.microbadger.com/badges/image/garystafford/microservice-docker-demo-user.svg)](http://microbadger.com/images/garystafford/microservice-docker-demo-user "Get your own image badge on microbadger.com")
 
-# microservice-docker-demo-user
+# Spring Boot User Microservice
 
 ## Introduction
 
