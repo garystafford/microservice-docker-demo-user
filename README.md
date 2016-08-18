@@ -116,7 +116,6 @@ docker run -e "SPRING_PROFILES_ACTIVE=production" -p 8031:8031 -t garystafford/u
 ```
 
 Import sample data to MongoDB running in container
-_Doesn't work right now even with sudo - error inserting documents: not authorized_
 ```bash
 PROJECT_ROOT='/Users/gstaffo/Documents/projects/widget-docker-demo'
 mongoimport --host localhost:27018 --db user --collection user \
