@@ -118,7 +118,7 @@ docker run -e "SPRING_PROFILES_ACTIVE=production" -p 8031:8031 -t garystafford/u
 Import sample data to MongoDB running in container
 ```bash
 PROJECT_ROOT='/Users/gstaffo/Documents/projects/widget-docker-demo'
-mongoimport --host localhost:27018 --db user --collection user \
+mongoimport --host localhost:27018 --db users --collection user \
   --type json --jsonArray \
   --file ${PROJECT_ROOT}/user-service/src/main/resources/data/data.json
 ```
