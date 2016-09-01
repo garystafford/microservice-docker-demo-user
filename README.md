@@ -6,12 +6,12 @@
 
 # Spring Boot User Microservice
 
-## Introduction
+#### Introduction
 One of a set of Java Spring Boot services, for an upcoming post on scaling microservices with the latest Spring and Docker features. A Docker Image, containing the service, is be build locally and pushed to DockerHub, using Spring Boot with Docker. Alternately, the post will demonstrate building the Docker Image, using a continuous integration pipeline with GitHub, Travis CI and DockerHub automated build feature.
 
 Users purchase widgets with points. User have characteristics, such as first name, last name, username, available points to purchase more widgets, and Widgets they currently own. Each user, with their widget collection, is stored in the `users` MongoDB database.
 
-## Technologies
+#### Technologies
 * Java
 * Spring Boot
 * Gradle
@@ -23,7 +23,7 @@ Users purchase widgets with points. User have characteristics, such as first nam
 * DockerHub
 * Travis CI
 
-## MongoDB
+#### MongoDB
 Import sample data to MongoDB locally
 ```bash
 # set your project root
@@ -128,5 +128,5 @@ mongoimport --host localhost:27018 --db users --collection user \
   --file ${PROJECT_ROOT}/user-service/src/main/resources/data/data.json
 ```
 
-## References
+#### References
 [https://github.com/Transmode/gradle-docker](https://github.com/Transmode/gradle-docker)
