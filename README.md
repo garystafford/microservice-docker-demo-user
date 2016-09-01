@@ -12,13 +12,16 @@ One of a set of Java Spring Boot services, for an upcoming post on scaling micro
 Users purchase widgets with points. User have characteristics, such as first name, last name, username, available points to purchase more widgets, and Widgets they currently own. Each user, with their widget collection, is stored in the `users` MongoDB database.
 
 ## Technologies
-- Java
-- Spring Boot
-- Gradle
-- MongoDB
-- Spring Cloud Config Server (migrating to Consul)
-- Spring Cloud Netflix Eureka
-- Spring Boot with Docker
+* Java
+* Spring Boot
+* Gradle
+* MongoDB
+* Spring Cloud Config Server (migrating to Consul)
+* Spring Cloud Netflix Eureka
+* Spring Boot with Docker
+* The Elastic Stack (Elasticsearch, Kibana, Logstash, and Beats)
+* DockerHub
+* Travis CI
 
 ## MongoDB
 Import sample data to MongoDB locally
