@@ -28,6 +28,7 @@ Import sample data to MongoDB locally
 ```bash
 # set your project root
 PROJECT_ROOT='/Users/gstaffo/Documents/projects/widget-docker-demo'
+
 mongoimport --host localhost:27017 --db users --collection user \
   --type json --jsonArray \
   --file ${PROJECT_ROOT}/user-service/src/main/resources/data/data.json
@@ -42,9 +43,8 @@ mongo # use mongo shell
 > db.dropDatabase()
 ```
 
-#### Build Service
-Build and start service locally
-
+#### Build Service Locally
+To build, test, and run the User service locally, both the [Spring Cloud Config Server](https://github.com/garystafford/microservice-docker-demo-config-server) and [Netflix Eureka](https://github.com/garystafford/microservice-docker-demo-eureka-server) projects must be started first.
 ```bash
 ./gradlew clean build && \
   java -jar -Dspring.profiles.active=local \
@@ -123,6 +123,7 @@ Import sample data to MongoDB running in container
 ```bash
 # set your project root
 PROJECT_ROOT='/Users/gstaffo/Documents/projects/widget-docker-demo'
+
 mongoimport --host localhost:27018 --db users --collection user \
   --type json --jsonArray \
   --file ${PROJECT_ROOT}/user-service/src/main/resources/data/data.json
