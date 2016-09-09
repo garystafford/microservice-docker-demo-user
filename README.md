@@ -7,9 +7,9 @@
 # Spring Boot User Microservice
 
 #### Introduction
-One of a set of Java Spring Boot services, for an upcoming post on scaling microservices with the latest Spring and Docker features. A Docker Image, containing the service, is be build locally and pushed to DockerHub, using Spring Boot with Docker. Alternately, the post will demonstrate building the Docker Image, using a continuous integration pipeline with GitHub, Travis CI and DockerHub automated build feature.
+The User microservice is one of a set of Java Spring Boot services, for an upcoming post on scaling microservices with the latest Spring and Docker features. Users purchase widgets with points. User have characteristics, such as first name, last name, username, available points to purchase more widgets, and Widgets they currently own. Each user, with their widget collection, is stored in the `users` MongoDB database.
 
-Users purchase widgets with points. User have characteristics, such as first name, last name, username, available points to purchase more widgets, and Widgets they currently own. Each user, with their widget collection, is stored in the `users` MongoDB database.
+The post and this associated project present two methods of building the Docker Image containing the Spring Boot service JAR. The Docker Image can be built locally, with Gradle, using Spring Boot with Docker, and pushed directly to DockerHub. Alternately, the Docker Image can be built using a typical continuous integration (CI) pipeline. The pipeline consists of GitHub, Gradle, Travis CI and/or Semaphore, and DockerHub, using DockerHub's automated Dockerfile build feature.
 
 #### Technologies
 * Java
