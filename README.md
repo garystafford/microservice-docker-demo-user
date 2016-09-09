@@ -1,7 +1,7 @@
 ###### Build:  
 ![https://travis-ci.org/garystafford/microservice-docker-demo-user.svg?branch=master](https://travis-ci.org/garystafford/microservice-docker-demo-user.svg?branch=master)
 
-###### Docker Hub:  
+###### Docker Hub (_status using [MicroBadger](https://microbadger.com/#/)_):  
 [![](https://images.microbadger.com/badges/version/garystafford/microservice-docker-demo-user.svg)](http://microbadger.com/images/garystafford/microservice-docker-demo-user "Get your own version badge on microbadger.com")  [![](https://images.microbadger.com/badges/image/garystafford/microservice-docker-demo-user.svg)](http://microbadger.com/images/garystafford/microservice-docker-demo-user "Get your own image badge on microbadger.com")
 
 # Spring Boot User Microservice
