@@ -1,4 +1,4 @@
-package com.example;
+package com.example.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -8,7 +8,7 @@ public class Widget {
     @Id
     private String id;
 
-    private String product_id;
+    private String productId;
     private String name;
     private String color;
     private String size;
@@ -18,9 +18,9 @@ public class Widget {
     public Widget() {
     }
 
-    public Widget(String product_id, String name, String color,
+    public Widget(String productId, String name, String color,
                   String size, Integer cost, String preview) {
-        this.product_id = product_id;
+        this.productId = productId;
         this.name = name;
         this.color = color;
         this.size = size;
@@ -28,12 +28,12 @@ public class Widget {
         this.preview = preview;
     }
 
-    public String getProduct_id() {
-        return product_id;
+    public String getproductId() {
+        return productId;
     }
 
-    public void setProduct_id(String product_id) {
-        this.product_id = product_id;
+    public void setproductId(String productId) {
+        this.productId = productId;
     }
 
     public String getName() {

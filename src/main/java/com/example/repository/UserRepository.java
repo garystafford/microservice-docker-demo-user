@@ -1,5 +1,6 @@
-package com.example;
+package com.example.repository;
 
+import com.example.domain.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
 
