@@ -1,4 +1,4 @@
-package com.example.domain;
+package com.user.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

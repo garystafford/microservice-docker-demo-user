@@ -1,4 +1,4 @@
-package com.example;
+package com.user;
 
 import org.junit.Ignore;
 import org.junit.Test;

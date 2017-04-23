@@ -1,0 +1,70 @@
+version: '3.0'
+
+services:
+  widget:
+    image: garystafford/microservice-docker-demo-widget:fluentd
+    hostname: widget
+    depends_on:
+    - mongodb
+    ports:
+    - 8030:8030/tcp
+    networks:
+    - demo_overlay_net
+    logging:
+      driver: fluentd
+      options:
+        tag: docker.{{.Name}}
+        fluentd-address: localhost:24224
+        labels: com.widget.environment
+        env: SERVICE_NAME, SERVICE_TAGS
+    labels:
+    - "com.widget.environment: ${ENVIRONMENT}"
+    deploy:
+      mode: global
+      placement:
+        constraints:
+        - node.role == worker
+    environment:
+    - "CONSUL_SERVER_URL=${CONSUL_SERVER}"
+    - "SERVICE_NAME=widget"
+    - "SERVICE_TAGS=service"
+    command: "java -Dspring.profiles.active=${ACTIVE_PROFILE} \
+      -Djava.security.egd=file:/dev/./urandom \
+      -jar widget/widget-service.jar"
+
+  mongodb:
+    image: mongo:latest
+    hostname: mongodb
+    command:
+    - --smallfiles
+    ports:
+    - 27017:27017/tcp
+    networks:
+    - demo_overlay_net
+    volumes:
+    - demo_data_vol:/data/db
+    logging:
+      driver: fluentd
+      options:
+        tag: docker.{{.Name}}
+        fluentd-address: localhost:24224
+        labels: com.widget.environment
+        env: SERVICE_NAME, SERVICE_TAGS, WIDGET_PROFILE
+    labels:
+    - "com.widget.environment: ${ENVIRONMENT}"
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+        - node.hostname == worker2
+    environment:
+    - "SERVICE_NAME=mongodb"
+    - "SERVICE_TAGS=database"
+
+networks:
+  demo_overlay_net:
+    external: true
+
+volumes:
+  demo_data_vol:
+    external: true
