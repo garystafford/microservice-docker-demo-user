@@ -34,6 +34,16 @@ mongoimport --host localhost:27017 --db users --collection user \
   --file ${PROJECT_ROOT}/user-service/src/main/resources/data/data.json
 ```
 
+Import sample data to MongoDB within a container
+```bash
+# set your project root
+PROJECT_ROOT='/Users/gstaffo/Documents/projects/widget-docker-demo'
+
+mongoimport --host mongodb:27017 --db users --collection user \
+  --type json --jsonArray \
+  --file ${PROJECT_ROOT}/user-service/src/main/resources/data/data.json
+```
+
 Common MongoDB commands
 ```bash
 mongo # use mongo shell
